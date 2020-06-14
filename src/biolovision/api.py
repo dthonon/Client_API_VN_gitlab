@@ -25,7 +25,7 @@ Biolovision API to Classes mapping:
 +===============================+=====================+
 | Taxo groups                   | TaxoGroupsAPI       |
 +-------------------------------+---------------------+
-| Families                      | NA                  |
+| Families                      | FamiliesAPI         |
 +-------------------------------+---------------------+
 | Species                       | SpeciesAPI          |
 +-------------------------------+---------------------+
@@ -527,6 +527,19 @@ class EntitiesAPI(BiolovisionAPI):
         super().__init__(config, "entities", max_retry, max_requests, max_chunks)
 
 
+class FamiliesAPI(BiolovisionAPI):
+    """ Implement api calls to families controler.
+
+    Methods
+    - api_get                - Return a single entity from the controler
+    - api_list               - Return a list of entity from the controler
+
+    """
+
+    def __init__(self, config, max_retry=None, max_requests=None, max_chunks=None):
+        super().__init__(config, "families", max_retry, max_requests, max_chunks)
+
+
 class FieldsAPI(BiolovisionAPI):
     """ Implement api calls to fields controler.
 
@@ -812,6 +825,7 @@ class TerritorialUnitsAPI(BiolovisionAPI):
         """Return list of taxo groups, from cache or site."""
         return super().api_list()
 
+
 class ValidationsAPI(BiolovisionAPI):
     """ Implement api calls to validations controler.
 
@@ -823,4 +837,3 @@ class ValidationsAPI(BiolovisionAPI):
 
     def __init__(self, config, max_retry=None, max_requests=None, max_chunks=None):
         super().__init__(config, "validations", max_retry, max_requests, max_chunks)
-
